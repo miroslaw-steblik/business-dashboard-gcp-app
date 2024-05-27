@@ -1,0 +1,7 @@
+.streamlit/
+poetry.lock
+.credentils/
+.env
+infra/airbyte_terraform/.credentials/
+infra/airbyte_terraform/.credentials/streamlit-apps-424120-3699e75c183b.json
+infra/airbyte_terraform/.credentials/streamlit-apps-424120-3699e75c183b.json
