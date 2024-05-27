@@ -18,17 +18,17 @@ By providing a centralized platform for all essential business data, this dashbo
 
 > Terraform
 
-[!NOTE]
-Terraform is an open-source tool for managing cloud infrastructure with code, commonly known as Infrastructure as Code (IaC). With its declarative syntax, Terraform enables you to define and provision resources across various cloud platforms, ensuring consistency and ease of management since resources are declared as code and not deployed by hand.
+> [!NOTE]
+> Terraform is an open-source tool for managing cloud infrastructure with code, commonly known as Infrastructure as Code (IaC). With its declarative syntax, Terraform enables you to define and provision resources across various cloud platforms, ensuring consistency and ease of management since resources are declared as code and not deployed by hand.
 
     
 > Airbyte
 
-[!NOTE]
-Airbyte is an open-source data movement infrastructure for building extract and load (EL) data pipelines. 
+> [!NOTE]
+> Airbyte is an open-source data movement infrastructure for building extract and load (EL) data pipelines. 
 
-[!TIP]
-When running Airbyte locally, the API server runs on localhost:8000 so the url is 
+> [!TIP]
+>When running Airbyte locally, the API server runs on localhost:8000 so the url is 
 http://localhost:8000
 
 
