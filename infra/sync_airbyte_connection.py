@@ -1,33 +1,4 @@
-# import requests
-# import json
 
-# # Define the API URL
-# api_url = "http://localhost:8000/api/public/health"
-
-# # Define the source and destination IDs
-# source_id = "6aab877d-0442-4964-9dac-5b791e228cbc"
-# destination_id = "60b9acdf-7bd3-49ef-8f14-72fcbc76bb19"
-
-# # Define the connection configuration
-# config = {
-#     "sourceId": source_id,
-#     "destinationId": destination_id,
-#     "syncCatalog": {
-#         "streams": [
-#             {"name": "client_aum"},
-#             {"name": "client_fee"},
-#             {"name": "client_main"}
-#         ]
-#     }
-# }
-
-# # Make the API request
-# response = requests.post(api_url + "connections/create", data=json.dumps(config))
-
-# # Print the response
-# print(response.json())
-
-###########################################################
 
 import requests
 import base64
