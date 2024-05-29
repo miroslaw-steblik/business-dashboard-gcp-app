@@ -1,33 +1,28 @@
+from __future__ import annotations
+
+
+
 from airflow import DAG
 from airflow.providers.airbyte.operators.airbyte import AirbyteTriggerSyncOperator
-from airflow.providers.airbyte.sensors.airbyte import AirbyteJobSensor
-import pendulum
+from airflow.utils.dates import days_ago
+
+
 
 AIRBYTE_CONNECTION_ID = 'business-dashboard-airbyte'
+CONN_ID = 'dde4de92-cf7e-461a-b237-cf069ce07d4a'
+DAG_ID = 'business_dashboard_airbyte_dag'
 
-
-with DAG(dag_id='business_dashboard_airbyte_dag',
-        default_args={'owner': 'airflow'},
-        schedule='@daily',
-        start_date=pendulum.today('UTC').add(days=-1)
+with DAG(dag_id=DAG_ID,
+        default_args={'owner': 'admin'},
+        schedule_interval='@weekly',
+        start_date=days_ago(1)
    ) as dag:
-
-   trigger_airbyte_sync = AirbyteTriggerSyncOperator(
-       task_id='airbyte_trigger_sync',
-       airbyte_conn_id='dde4de92-cf7e-461a-b237-cf069ce07d4a',
-       connection_id=AIRBYTE_CONNECTION_ID,
-       asynchronous=True
-   )
-
-   wait_for_sync_completion = AirbyteJobSensor(
-       task_id='airbyte_check_sync',
-       airbyte_conn_id='dde4de92-cf7e-461a-b237-cf069ce07d4a',
-       airbyte_job_id=trigger_airbyte_sync.output
-   )
-
-
-   
-   trigger_airbyte_sync >> wait_for_sync_completion 
+    
+    sync_source_destination = AirbyteTriggerSyncOperator(
+        task_id='airbyte_sync_source_destination',
+        connection_id=CONN_ID,
+        airbyte_conn_id = AIRBYTE_CONNECTION_ID
+    )
 
 # This DAG will trigger a sync job for the Airbyte connection with the ID 'business-dashboard-airbyte' 
 # and wait for the job to complete.
