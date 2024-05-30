@@ -40,6 +40,8 @@ cur.execute(
 
 conn.commit() 
 
+cur.execute("TRUNCATE client_main;") # Truncate the table before loading the data
+
 with open("./data/client_database.csv", "r") as f:
     next(f)             # Skip the header row.
     cur.copy_expert("COPY client_main FROM STDIN CSV", f)
@@ -66,9 +68,11 @@ cur.execute(
 
 conn.commit()
 
+cur.execute("TRUNCATE client_aum;") # Truncate the table before loading the data
+
 for file in os.listdir("./data/aum"):
     with open(f"./data/aum/{file}", "r") as f:
-        next(f)             # Skip the header row.
+        next(f)             # Skip the header row.    
         cur.copy_expert("COPY client_aum( \
                         internal_id, \
                         aum_date, \
@@ -95,6 +99,8 @@ cur.execute(
     """
 )
 conn.commit()
+
+cur.execute("TRUNCATE client_fee;") # Truncate the table before loading the data
 
 for file in os.listdir("./data/fees"):
     with open(f"./data/fees/{file}", "r") as f:
